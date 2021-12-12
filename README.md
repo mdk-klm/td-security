@@ -20,5 +20,4 @@ npm run build
 npm run lint
 ```
 
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+Ce projet contient la vulnérabilité d'injection de commande
