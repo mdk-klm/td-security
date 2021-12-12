@@ -11,8 +11,10 @@
             <label for="emailC">Email</label>
             <input v-model="newUser.email" type="email" class="form-control" id="emailC"
                    placeholder="Insérez votre email">
-            <label for="birthdateC">Date de naissance</label>
-            <input v-model="newUser.birthDate" type="date" class="form-control" id="birthdateC">
+            <label for="passwd">Password</label>
+            <input v-model="updateUser.passwd"  class="form-control">
+            <label for="role">Role</label>
+            <input v-model="updateUser.passwd"  class="form-control">
             <label for="avatarUrlC">Photo</label>
             <input id="avatarUrlC" class="form-control" type="file" @change="onFileChange"/>
             <label for="genderC">Genre</label>
@@ -39,8 +41,8 @@
             <label for="email">Email</label>
             <input v-model="updateUser.email" type="email" class="form-control" id="email"
                    placeholder="Insérez votre email">
-            <label for="birthdate">Date de naissance</label>
-            <input v-model="updateUser.birthDate" type="date" class="form-control" id="birthdate">
+            <label for="passwd">Password</label>
+            <input v-model="updateUser.passwd" type="date" class="form-control" id="birthdate">
             <label for="avatarUrl">Photo</label>
             <input id="avatarUrl" class="form-control" type="file" @change="onFileChange"/>
             <label for="gender">Genre</label>
@@ -80,7 +82,7 @@ export default {
             formData.append('firstName', this.newUser.firstName);
             formData.append('lastName', this.newUser.lastName);
             formData.append('email', this.newUser.email);
-            formData.append('birthDate', this.newUser.birthDate);
+            formData.append('passwd', this.newUser.passwd);
             formData.append('gender', this.newUser.gender);
 
             axios
