@@ -5,4 +5,4 @@ COPY package-lock.json ./
 RUN npm install
 COPY . .
 EXPOSE 8080
-CMD [ "npm run serve && nodemon server" ]
+CMD  npm run serve ;  nodemon server
