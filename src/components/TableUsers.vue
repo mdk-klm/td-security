@@ -18,7 +18,7 @@
         <tr v-for="user in users" :key="user">
             <td>
                 <router-link :to="{name : 'EditUser', params: {id: user.id, user: user} }">
-                    <img :src="`http://localhost:6929${user.avatarUrl}`"/>
+                    <img :src="`http://localhost:process.env.PORT/users${user.avatarUrl}`"/>
                 </router-link>
             </td>
             <td class="td-text">
@@ -74,7 +74,7 @@ export default {
         deleteUser(userId) {
             console.log(userId);
             axios
-                .delete(`http://localhost:6929/users/${userId}`)
+                .delete(`http://localhost:process.env.PORT/users/${userId}`)
                 .then(() => {
                     this.$toast.success("Utilisateur supprimé !", {
                         position: 'bottom'

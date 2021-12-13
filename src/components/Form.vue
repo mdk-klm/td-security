@@ -30,7 +30,7 @@
     <template v-if="usage === 'edit'">
         <div class="container">
             <div class="img-edit">
-                <img :src="`http://localhost:6929${updateUser.avatarUrl}`">
+                <img :src="`http://localhost:process.env.PORT/users${updateUser.avatarUrl}`">
             </div>
             <label for="firstname">Prénom</label>
             <input v-model="updateUser.firstName" type="text" class="form-control" id="firstname"
@@ -86,7 +86,7 @@ export default {
             formData.append('gender', this.newUser.gender);
 
             axios
-                .post('http://localhost:6929/users', formData)
+                .post('http://localhost:process.env.PORT/users', formData)
                 .then((response) => {
                     console.log(response);
                     this.$toast.success("Création de l'utilisateur réussie ! Vous allez être redirigé.", {
@@ -103,7 +103,7 @@ export default {
         // Modifier un utilisateur
         editUser() {
             axios
-                .put(`http://localhost:6929/users/${this.updateUser.id}`, this.updateUser)
+                .put(`http://localhost:process.env.PORT/users/${this.updateUser.id}`, this.updateUser)
                 .then(() => {
                     this.$toast.success("Modification de l'utilisateur réussie ! Vous allez être redirigé.", {
                         position: 'bottom'
