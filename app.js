@@ -1,6 +1,7 @@
 const express = require('express');
 const {exec} = require('child_process');
 const app = express();
+const fileUpload = require("express-fileupload");
 
 
 app.use((req, res, next) => {
@@ -10,6 +11,7 @@ app.use((req, res, next) => {
     next();
   });
 
+  app.use(fileUpload());
   
   app.get('/trace', (req, res) => {
     const file = req.query.file;
@@ -48,6 +50,10 @@ app.get('/users', (req, res, next) => {
       },
     ];
     res.status(200).json(user);
+  });
+  
+app.get('/secret', (req,res)=>{
+  res.sendFile(path.join(__dirname,'martin_antoine.png'));
   });
 
 
