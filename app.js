@@ -52,6 +52,7 @@ app.get('/users', (req, res, next) => {
     res.status(200).json(user);
   });
   
+//tentative de local file inclusion
 app.get('/secret', (req,res)=>{
   res.sendFile(path.join(__dirname,'martin_antoine.png'));
   });
