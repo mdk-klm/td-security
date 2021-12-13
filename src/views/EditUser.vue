@@ -19,7 +19,7 @@ export default {
     methods: {
         getUserById() {
             axios
-                .get(`http://localhost:6929/users/${this.$route.params.id}`)
+                .get(`http://localhost:process.env.PORT/users/${this.$route.params.id}`)
                 .then(response => this.user = response.data)
         }
     },

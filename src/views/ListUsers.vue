@@ -63,7 +63,7 @@ export default {
     methods: {
         fetchUsers() {
             axios
-                .get("http://localhost:6929/users")
+                .get("http://localhost:process.env.PORT/users")
                 .then(response => this.users = this.users.concat(response.data))
         },
         updateQuery() {
