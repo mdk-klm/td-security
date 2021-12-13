@@ -52,10 +52,46 @@ app.get('/users', (req, res, next) => {
     res.status(200).json(user);
   });
   
-//tentative de local file inclusion
 app.get('/secret', (req,res)=>{
   res.sendFile(path.join(__dirname,'martin_antoine.png'));
   });
+
+  app.get('/lfi', (req, res, next) => {
+    const { q, file, mode } = req.query;
+    if(mode === 'read'){
+	console.log('read');
+	console.log(file);
+        if(file.indexOf('./') === -1){
+		console.log('readfile');
+            file_contents = fs.readFileSync(path.join(__dirname, 'searchable', req.query.file));
+console.log(file_contents);
+if(file_contents.indexOf(q)){
+		console.log('sending file');
+		searchPath=path.join(__dirname,'searchable',req.query.file);
+		console.log(searchPath);
+                res.sendFile(searchPath);
+            }
+        } else {
+	console.log('hacked')
+        }
+
+    } else if(mode === 'write'){
+	console.log('write');
+        fs.writeFile(path.join(__dirname, 'searchable', req.query.file), req.query.q, () => {
+            res.send('ok');
+        });
+    } 
+ else if(mode==='execute') {
+console.log('execute');
+  const myFile=require('./lfi/'+file);
+result=myFile();
+res.send('File run '+result);
+
+}else {
+	console.log('file mode')
+        res.status(400).send('tu es hacké');
+    }
+});
 
 
 
